@@ -37,9 +37,23 @@ public class AddToCartStepsDefs {
     }
 
     @Then("the coupon should be applied successfully")
-    public void i_should_be_redirected_to_the_cart_page() {
+    public void iShouldBeRedirectedToTheCartPage() {
 
         assertEquals("Coupon code applied successfully.", cartPage.successMessage());
+
+    }
+
+    @When("the customer updates the product quantity")
+    public void theCustomerUpdatesTheProductQuantity() {
+        cartPage.updateCart();
+
+
+    }
+    @Then("the cart should be updated successfully")
+    public void the_cart_should_be_updated_successfully() {
+
+        String result = cartPage.getMessage();
+        assertEquals(result, "Cart updated.");
 
     }
 }
