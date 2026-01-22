@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
 
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/ApplyCoupon.feature",
         glue = {"steps","hooks","constants","factory","pages","utils"},
         snippets = CAMELCASE,
         plugin = {

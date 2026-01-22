@@ -22,6 +22,8 @@ public class CartPage extends BasePage{
     private By cartPageMessage = By.cssSelector("div.woocommerce-message");
 
     private By successMessage = By.xpath("//div[@role='alert'] ");
+    private By failMessage = By.cssSelector("div.woocommerce-notices-wrapper");
+
 
 
     public CartPage(WebDriver driver) {
@@ -31,12 +33,16 @@ public class CartPage extends BasePage{
     public void applyCouponcode(String code){
         couponFld.sendKeys(code);
         applyCouponButton.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage));
 
     }
     public String successMessage(){
-        return driver.findElement(successMessage).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage)).getText();
+
     }
+    public String failMessage() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(failMessage)).getText();
+    }
+
 
     public void updateCart() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(updateField));

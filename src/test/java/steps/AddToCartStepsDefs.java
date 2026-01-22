@@ -19,7 +19,7 @@ public class AddToCartStepsDefs {
     private StorePage storePage;
     private CartPage cartPage;
 
-    @Given("the customer has a product in the cart")
+    @Given("the customer has product in the cart")
     public void customerHasProductInCart() {
         driver = DriverFactory.getDriver();
         storePage = PageFactoryManager.getStorePage(driver);
@@ -37,11 +37,24 @@ public class AddToCartStepsDefs {
     }
 
     @Then("the coupon should be applied successfully")
-    public void iShouldBeRedirectedToTheCartPage() {
+    public void theCouponShouldBeAppliedSuccessfully() {
 
         assertEquals("Coupon code applied successfully.", cartPage.successMessage());
 
     }
+
+    @Then("the coupon should not be applied")
+    public void theCouponShouldNotBeAppliedSuccessfully() {
+
+
+
+
+
+        assertEquals("Coupon \"off30\" does not exist!", cartPage.failMessage());
+
+    }
+
+
 
     @When("the customer updates the product quantity")
     public void theCustomerUpdatesTheProductQuantity() {
