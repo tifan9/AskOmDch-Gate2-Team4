@@ -19,7 +19,7 @@ public class AddToCartStepsDefs {
     private StorePage storePage;
     private CartPage cartPage;
 
-    @Given("the customer has product in the cart")
+    @Given("the customer has a product in the cart")
     public void customerHasProductInCart() {
         driver = DriverFactory.getDriver();
         storePage = PageFactoryManager.getStorePage(driver);
