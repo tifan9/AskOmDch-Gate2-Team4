@@ -20,4 +20,7 @@ public class BasePage {
     public void loader(String endPoint){
         driver.get(ConfigLoader.getInstance().getBaseUrl()+endPoint);
     }
+    public void loader2(String endPoint){
+        driver.get(endPoint);
+    }
 }
