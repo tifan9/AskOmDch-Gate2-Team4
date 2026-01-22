@@ -1,5 +1,6 @@
 package steps;
 
+import constants.EndPoints;
 import factory.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
@@ -21,7 +22,7 @@ public class LoginStepDefs {
         public void customerHasAccount(){
         driver = DriverFactory.getDriver();
         accountPage = PageFactoryManager.getAccountPage(driver);
-        accountPage.loader("account");
+        accountPage.loader(EndPoints.ACCOUNT);
 
     }
 

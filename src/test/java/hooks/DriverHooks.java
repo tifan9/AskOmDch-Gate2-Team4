@@ -10,7 +10,7 @@ public class DriverHooks {
 
     @Before
     public void before(){
-        driver = DriverFactory.setUpDriver();
+        driver = DriverFactory.setUpDriver(System.getProperty("browser","chrome"));
     }
 
     @After

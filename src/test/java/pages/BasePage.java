@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ConfigLoader;
 
 import java.time.Duration;
 
@@ -16,7 +17,7 @@ public class BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public void loader(String page){
-        driver.get("https://askomdch.com/"+page);
+    public void loader(String endPoint){
+        driver.get(ConfigLoader.getInstance().getBaseUrl()+endPoint);
     }
 }
