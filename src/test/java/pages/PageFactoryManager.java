@@ -9,18 +9,18 @@ public class PageFactoryManager {
     private static StorePage storePage;
 
     public static AccountPage getAccountPage(WebDriver driver) {
-        return accountPage == null? new AccountPage(driver):accountPage;
+        return accountPage == null ? new AccountPage(driver) : accountPage;
     }
 
     public static CartPage getCartPage(WebDriver driver) {
-        return cartPage == null? new CartPage(driver):cartPage;
+        return cartPage == null ? new CartPage(driver) : cartPage;
     }
 
     public static CheckoutPage getCheckoutPage(WebDriver driver) {
-        return checkoutPage == null? new CheckoutPage(driver):checkoutPage;
+        return checkoutPage == null ? new CheckoutPage(driver) : checkoutPage;
     }
 
     public static StorePage getStorePage(WebDriver driver) {
-        return storePage == null? new StorePage(driver):storePage;
+        return storePage == null ? new StorePage(driver) : storePage;
     }
 }
