@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,8 +18,8 @@ public class CartPage extends BasePage{
     @FindBy(css = "button[name='update_cart'], .button[name='update_cart'], input[name='update_cart']") private WebElement updateCartButton;
     @FindBy(id = "coupon_code") private WebElement couponFld;
     @FindBy(name = "apply_coupon") private WebElement applyCouponButton;
-    @FindBy(css = ".cart-subtotal .amount, .order-total .amount")
-    private WebElement cartTotalElement;
+    @FindBy(css = ".cart-subtotal .amount, .order-total .amount") private WebElement cartTotalElement;
+    @FindBy(css = ".checkout-button") private WebElement proceedToCheckout;
 
     @FindBy(css = ".product-price .amount")
     private List<WebElement> itemPrices;
@@ -64,6 +65,10 @@ public class CartPage extends BasePage{
         }
         updateCartButton.click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cart_item, .woocommerce-cart-form__cart-item, tr.cart_item")));
+    }
+    public CheckoutPage proceedToCheckout(){
+        proceedToCheckout.click();
+        return PageFactoryManager.getCheckoutPage(driver);
     }
     
     public CartPage(WebDriver driver) {

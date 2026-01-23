@@ -7,8 +7,8 @@ import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"steps","hooks"},
-//        tags = "",
+        glue = {"steps","hooks", "customTypes"},
+        tags = "@firstone",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports.html",

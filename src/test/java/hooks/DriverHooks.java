@@ -13,8 +13,8 @@ public class DriverHooks {
         driver = DriverFactory.setUpDriver(System.getProperty("browser","chrome"));
     }
 
-//    @After
-//    public void after(){
-//        driver.quit();
-//    }
+    @After
+    public void after(){
+        driver.quit();
+    }
 }

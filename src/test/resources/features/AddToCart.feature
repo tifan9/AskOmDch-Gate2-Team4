@@ -1,3 +1,4 @@
+@AddToCart
 Feature: Add product to cart
   As a customer
   I want to add a specific product to the cart successfully
@@ -5,6 +6,7 @@ Feature: Add product to cart
 
 Background:
     Given I am on the Store Page
+  @AddOne
   Scenario: Add a specific product to cart
     When I add "Black Over-the-shoulder Handbag" to the cart
     Then the product should be added to the cart successfully
