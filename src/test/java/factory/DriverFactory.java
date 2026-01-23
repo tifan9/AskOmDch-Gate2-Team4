@@ -22,6 +22,7 @@ public class DriverFactory {
             default: throw new IllegalStateException("INVALID BROWSER!");
 
         }
+        driver.manage().window().maximize();
         return driver;
     }
     public static WebDriver getDriver(){

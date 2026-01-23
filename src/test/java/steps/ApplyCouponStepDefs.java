@@ -24,7 +24,8 @@ public class ApplyCouponStepDefs {
         driver = DriverFactory.getDriver();
         storePage = PageFactoryManager.getStorePage(driver);
         storePage.loader(EndPoints.STORE);
-        storePage.addProductToCart();
+        // Add a default product to cart - use a product that's available
+        storePage.addProductToCart("Black Over-the-shoulder Handbag");
     }
 
     @And("the customer is on the cart page")
@@ -39,19 +40,16 @@ public class ApplyCouponStepDefs {
 
     @Then("the coupon should be applied successfully")
     public void theCouponShouldBeAppliedSuccessfully() {
-
-        assertEquals("Coupon code applied successfully.", cartPage.successMessage());
-
+        assertEquals(cartPage.successMessage(), "Coupon code applied successfully.");
     }
 
     @Then("the coupon should not be applied")
     public void theCouponShouldNotBeAppliedSuccessfully() {
-        assertEquals("Coupon \"off30\" does not exist!", cartPage.failMessage());
+        assertEquals(cartPage.failMessage(), "Coupon \"off30\" does not exist!");
     }
 
     @Then("the cart should be updated successfully")
-    public void the_cart_should_be_updated_successfully() {
-
+    public void theCartShouldBeUpdatedSuccessfully() {
         String result = cartPage.getMessage();
         assertEquals(result, "Cart updated.");
     }

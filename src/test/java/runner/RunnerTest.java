@@ -14,7 +14,8 @@ import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
                 "html:target/cucumber-reports.html",
                 "json:target/cucumber.json"
 
-        }
+        },
+        monochrome = true
 )
 
 public class RunnerTest extends AbstractTestNGCucumberTests {
