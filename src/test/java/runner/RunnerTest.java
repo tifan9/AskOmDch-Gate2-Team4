@@ -8,7 +8,7 @@ import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"steps","hooks","constants","customTypes"},
-        tags = "@Register or @Login",
+        tags = "@All",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports.html",

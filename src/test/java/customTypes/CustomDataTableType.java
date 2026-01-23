@@ -1,6 +1,7 @@
 package customTypes;
 
 import domainObjects.BillingDetails;
+import domainObjects.Credentials;
 import io.cucumber.java.DataTableType;
 
 import java.util.Map;
@@ -19,5 +20,14 @@ public class CustomDataTableType {
                 entries.get("email")
         );
 
+    }
+
+    @DataTableType
+    public Credentials credentialsEntry(Map<String, String> entry){
+        return new Credentials(
+                entry.get("username"),
+                entry.get("email"),
+                entry.get("password")
+        );
     }
 }
