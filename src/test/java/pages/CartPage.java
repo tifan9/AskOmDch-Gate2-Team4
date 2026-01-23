@@ -26,6 +26,9 @@ public class CartPage extends BasePage{
 
     @FindBy(css = ".product-price .amount")
     private List<WebElement> itemPrices;
+    @FindBy(css = ".checkout-button")
+    private WebElement proceedToCheckout;
+
 
 
 
