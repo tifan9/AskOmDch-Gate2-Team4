@@ -78,5 +78,10 @@ public class CartPage extends BasePage{
         return cartUpdateMessage.getText();
     }
 
+    public CheckoutPage proceedToCheckout(){
+        proceedToCheckout.click();
+        return PageFactoryManager.getCheckoutPage(driver);
+    }
+
 
 }
