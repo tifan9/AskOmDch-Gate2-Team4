@@ -9,8 +9,6 @@ Feature: Add product to cart and apply coupon
     And the customer is on the cart page
 
   Scenario: Add a specific product to cart and apply coupon
-
-
   When the customer applies the coupon "off25"
   Then the coupon should be applied successfully
 

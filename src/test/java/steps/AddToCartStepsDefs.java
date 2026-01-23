@@ -45,28 +45,12 @@ public class AddToCartStepsDefs {
 
     @Then("the coupon should not be applied")
     public void theCouponShouldNotBeAppliedSuccessfully() {
-
-
-
-
-
         assertEquals("Coupon \"off30\" does not exist!", cartPage.failMessage());
-
     }
-
-
-
-    @When("the customer updates the product quantity")
-    public void theCustomerUpdatesTheProductQuantity() {
-        cartPage.updateCart();
-
-
-    }
-    @Then("the cart should be updated successfully")
+  @Then("the cart should be updated successfully")
     public void the_cart_should_be_updated_successfully() {
 
         String result = cartPage.getMessage();
         assertEquals(result, "Cart updated.");
-
     }
 }
