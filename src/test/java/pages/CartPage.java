@@ -21,6 +21,8 @@ public class CartPage extends BasePage{
     @FindBy(css = ".product-name a, .cart_item .product-name") private List<WebElement> cartProductNames;
     @FindBy(css = ".qty, input[name*='quantity'], .quantity input") private List<WebElement> quantityInputs;
     @FindBy(css = "button[name='update_cart'], .button[name='update_cart'], input[name='update_cart']") private WebElement updateCartButton;
+    @FindBy(css = ".checkout-button") private WebElement proceedToCheckout;
+
 
     @FindBy(css = ".cart-subtotal .amount, .order-total .amount")
     private WebElement cartTotalElement;
@@ -75,5 +77,6 @@ public class CartPage extends BasePage{
         WebElement cartUpdateMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(cartPageMessage));
         return cartUpdateMessage.getText();
     }
+
 
 }
