@@ -3,16 +3,20 @@ package runner;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
+import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
+
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"steps","hooks","customTypes"},
-        tags = "@Login",
+        glue = {"steps","hooks", "customTypes"},
+        tags = "@secondone or @firstone",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports.html",
                 "json:target/cucumber.json"
 
-        }
+        },
+        snippets = CAMELCASE,
+        monochrome = true
 )
 
 public class RunnerTest extends AbstractTestNGCucumberTests {

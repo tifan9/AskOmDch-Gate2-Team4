@@ -1,17 +1,23 @@
 package customTypes;
 
-import domainObjects.Credentials;
+import domainObjects.BillingDetails;
 import io.cucumber.java.DataTableType;
 
 import java.util.Map;
 
 public class CustomDataTableType {
     @DataTableType
-    public Credentials loginCredentials(Map<String, String> entries){
-        return new Credentials(
-                entries.get("username"),
-                entries.get("email"),
-                entries.get("password"));
-    }
+    public BillingDetails billingDetailsEntry(Map<String, String> entries){
+        return new BillingDetails(
+                entries.get("firstName"),
+                entries.get("lastName"),
+                entries.get("country"),
+                entries.get("address"),
+                entries.get("city"),
+                entries.get("state"),
+                entries.get("zipCode"),
+                entries.get("email")
+        );
 
+    }
 }
