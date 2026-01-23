@@ -38,19 +38,20 @@ public class ApplyCouponStepDefs {
         cartPage.applyCouponcode(coupon);
     }
 
-    @Then("the coupon should be applied successfully")
-    public void theCouponShouldBeAppliedSuccessfully() {
-        assertEquals(cartPage.successMessage(), "Coupon code applied successfully.");
-    }
 
-    @Then("the coupon should not be applied")
-    public void theCouponShouldNotBeAppliedSuccessfully() {
-        assertEquals(cartPage.failMessage(), "Coupon \"off30\" does not exist!");
-    }
-
-    @Then("the cart should be updated successfully")
-    public void theCartShouldBeUpdatedSuccessfully() {
+    @Then("the coupon successfully message should be displayed")
+    public void theCouponSuccessfullyMessageShouldBeDisplayed() {
         String result = cartPage.getMessage();
-        assertEquals(result, "Cart updated.");
+        assertEquals(result, "Coupon code applied successfully.");
+    }
+
+
+
+
+
+    @Then("an error message should be displayed")
+    public void anErrorMessageCouponDoesNotExistShouldBeDisplayed() {
+        String result = cartPage.failMessage();
+        assertEquals(result, "Coupon \"off30\" does not exist!");
     }
 }

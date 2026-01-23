@@ -13,7 +13,7 @@ Feature: Sort Product
         Examples:
         | sortOption           |
         | Sort by price: low to high  |
-#        | Sort by price: high to low  |
+        | Sort by price: high to low  |
 #        | Popularity           |
 #        | Average Rating       |
 #        | Latest               |

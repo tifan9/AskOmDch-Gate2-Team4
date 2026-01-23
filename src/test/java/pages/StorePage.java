@@ -14,7 +14,7 @@ import java.util.List;
 
 
 public class StorePage extends BasePage {
-@FindBy(css = ".price-slider-amount #amount") private WebElement priceRangeDisplay;
+    @FindBy(css = ".price-slider-amount #amount") private WebElement priceRangeDisplay;
     @FindBy(css = "button[type='submit']") private List<WebElement> filterButton;
     @FindBy(css = ".ui-slider-handle.ui-corner-all.ui-state-default") private List<WebElement> sliderHandles;
     @FindBy(css = ".price, .amount, .woocommerce-Price-amount") private List<WebElement> productPrices;
@@ -38,11 +38,15 @@ public class StorePage extends BasePage {
 
     public StorePage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    private int getFromPrice() {
+        return Integer.parseInt(fromPrice.getText().replaceAll("[^0-9]", ""));
+    }
 
+    private int getToPrice() {
+        return Integer.parseInt(toPrice.getText().replaceAll("[^0-9]", ""));
+    }
     public void filterByPriceRange(int minPrice, int maxPrice) {
         wait.until(ExpectedConditions.visibilityOfAllElements(sliderHandles));
 
@@ -71,13 +75,7 @@ public class StorePage extends BasePage {
         ));
     }
 
-    private int getFromPrice() {
-        return Integer.parseInt(fromPrice.getText().replaceAll("[^0-9]", ""));
-    }
 
-    private int getToPrice() {
-        return Integer.parseInt(toPrice.getText().replaceAll("[^0-9]", ""));
-    }
 
     public boolean areAllProductsInPriceRange(int minPrice, int maxPrice) {
         wait.until(ExpectedConditions.visibilityOfAllElements(productItems));
@@ -99,18 +97,6 @@ public class StorePage extends BasePage {
         });
     }
 
-
-
-
-    public boolean hasFilteredProductsDisplayed() {
-        try {
-            wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("ul.products li.product")));
-            List<WebElement> filteredProducts = driver.findElements(By.cssSelector("ul.products li.product"));
-            return !filteredProducts.isEmpty();
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
     public boolean hasProductsDisplayed() {
         wait.until(ExpectedConditions.visibilityOfAllElements(productItems));
@@ -171,11 +157,6 @@ public class StorePage extends BasePage {
 
     public boolean isProductsSortedBy(String sortOption) {
         return !productItems.isEmpty();
-    }
-    public void addToCart(String productName){
-        By addToCartButton = By.cssSelector("a[aria-label='Add \"" + productName + "\" to your cart']");
-        wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(ViewCartLink)).click();
     }
 
     // view product details page

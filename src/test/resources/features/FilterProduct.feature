@@ -16,5 +16,5 @@ Background:
         Examples:
         |CategoryName|
         |Men  (7)   |
-#       |Women  (7)  |
+       |Women  (7)  |
 

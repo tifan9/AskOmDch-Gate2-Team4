@@ -27,7 +27,6 @@ public class CartPage extends BasePage{
 
     @FindBy(css = ".product-price .amount")
     private List<WebElement> itemPrices;
-//    private By successMessage = By.xpath("//div[@role='alert'] ");
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -37,26 +36,14 @@ public class CartPage extends BasePage{
         return Double.parseDouble(totalText);
     }
 
-    public double calculateSumOfItems() {
-        return itemPrices.stream()
-                .mapToDouble(e -> Double.parseDouble(e.getText().replaceAll("[^0-9.]", "")))
-                .sum();
-    }
 
-    public boolean isProductInCart(String productName) {
-        return cartProductNames.stream().anyMatch(item -> item.getText().toLowerCase().contains(productName.toLowerCase()));
-    }
     public boolean hasProductsDisplayed() {
-        try {
-//            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
+
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cart_item, .woocommerce-cart-form__cart-item, tr.cart_item")));
             return !cartItems.isEmpty();
-        } catch (Exception e) {
-            return false;
-        }
+
     }
     public void updateProductQuantity(String productName, int quantity) {
-//        WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
         for (WebElement input : quantityInputs) {
             input.clear();
             input.sendKeys(String.valueOf(quantity));
@@ -68,31 +55,20 @@ public class CartPage extends BasePage{
     public void applyCouponcode(String code) {
         couponFld.sendKeys(code);
         applyCouponButton.click();
-
-        // Wait for either success or failure message to appear
-        try {
             wait.until(ExpectedConditions.or(
                 ExpectedConditions.visibilityOfElementLocated(successMessage),
                 ExpectedConditions.visibilityOfElementLocated(failMessage)
             ));
-        } catch (Exception e) {
-            System.out.println("No coupon response message found: " + e.getMessage());
-        }
+
     }
     public String successMessage() {
-        try {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage)).getText();
-        } catch (Exception e) {
-            return "";
-        }
     }
 
     public String failMessage() {
-        try {
+
             return wait.until(ExpectedConditions.visibilityOfElementLocated(failMessage)).getText();
-        } catch (Exception e) {
-            return "";
-        }
+
     }
 
     public String getMessage() {

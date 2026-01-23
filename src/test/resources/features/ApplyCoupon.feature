@@ -1,4 +1,4 @@
-Feature: Add product to cart and apply coupon
+Feature: Apply coupon
 
   In order to purchase a product with a discount
   As a customer
@@ -8,11 +8,13 @@ Feature: Add product to cart and apply coupon
     Given the customer has product in the cart
     And the customer is on the cart page
 
-  Scenario: Add a specific product to cart and apply coupon
+  Scenario: Customer applies coupon
   When the customer applies the coupon "off25"
-  Then the coupon should be applied successfully
+    Then the coupon successfully message should be displayed
 
-  Scenario: Add a specific product to cart and apply wrong coupon
+
+  Scenario: Customer applies wrong coupon
     When the customer applies the coupon "off30"
-    Then the coupon should not be applied
+    Then an error message should be displayed
+
 
