@@ -1,3 +1,4 @@
+@All @ApplyCoupon
 Feature: Apply coupon
 
   In order to purchase a product with a discount

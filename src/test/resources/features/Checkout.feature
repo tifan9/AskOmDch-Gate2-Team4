@@ -1,3 +1,4 @@
+@All @Checkout
 Feature: Checkout page functionality
 
   Background:
@@ -5,7 +6,6 @@ Feature: Checkout page functionality
     And I am on the checkout page
 
 
-  @firstone
   Rule: Complete checkout with Billing and Payment details
 
   Scenario: Verify that checkout has successfully done with valid billing and payment details
@@ -22,7 +22,6 @@ Feature: Checkout page functionality
     And I place the order
     Then I should see error message for required field: "Billing First name is a required field."
 
-    @secondone
   Rule: Place order with separate billing and shipping addresses
 
     Scenario: Verify checkout with billing details and different valid shipping address

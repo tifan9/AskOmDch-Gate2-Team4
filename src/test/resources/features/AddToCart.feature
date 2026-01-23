@@ -1,3 +1,4 @@
+@All @AddToCart
 Feature: Add products to cart
   As a customer
   I want to add products to the cart successfully

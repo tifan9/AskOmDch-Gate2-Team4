@@ -1,3 +1,4 @@
+@All @SearchProduct
 Feature: Search Product
   As a Customer I want to search for products using keywords
   So that I can quickly find specific products I'm looking for

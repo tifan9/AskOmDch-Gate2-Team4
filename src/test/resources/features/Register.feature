@@ -1,4 +1,4 @@
-@Register
+@All @Register
 Feature: New Customer Registering an Account
 
   As a new customer,

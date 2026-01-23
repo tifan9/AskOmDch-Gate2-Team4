@@ -1,3 +1,4 @@
+@All @ProductView
 Feature: View Product Details
 
   Scenario: View product details successfully

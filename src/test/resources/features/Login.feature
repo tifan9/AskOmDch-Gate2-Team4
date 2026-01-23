@@ -1,4 +1,4 @@
-@Login
+@All @Login
 Feature: Registered customer logging in
   As a registered customer,
   I want to log into my account,

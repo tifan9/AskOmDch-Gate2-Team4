@@ -1,3 +1,4 @@
+@All @SortProduct
 Feature: Sort Product
   As a Customer,
   I want to sort products by different criteria

@@ -62,6 +62,10 @@ public class CartPage extends BasePage{
         return PageFactoryManager.getCheckoutPage(driver);
     }
 
+    public String failMessage() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(failMessage)).getText();
+    }
+
     public void applyCouponcode(String code) {
         couponFld.sendKeys(code);
         applyCouponButton.click();
@@ -69,6 +73,7 @@ public class CartPage extends BasePage{
                 ExpectedConditions.visibilityOfElementLocated(successMessage),
                 ExpectedConditions.visibilityOfElementLocated(failMessage)
         ));
+
 
     }
 

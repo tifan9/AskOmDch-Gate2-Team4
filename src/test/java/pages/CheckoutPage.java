@@ -12,7 +12,6 @@ public class CheckoutPage extends BasePage{
 
     private By billingFirstname = By.id("billing_first_name");
     private By billingLastname = By.id("billing_last_name");
-    @FindBy(id = "billing_country") private WebElement billingCountry;
     private By billingStreet = By.id("billing_address_1");
     private By billingTown = By.id("billing_city");
     private By billingState = By.id("billing_state");
@@ -20,8 +19,9 @@ public class CheckoutPage extends BasePage{
     private By billingEmail = By.id("billing_email");
     private By placeOrderButton = By.id("place_order");
     private By orderSuccessMessage = By.xpath("//*[@id=\"post-1221\"]/div/div/div/div/div/p");
-    @FindBy(css = ".woocommerce-error>li") private WebElement failedBillingDetailMessage;
 
+    @FindBy(css = ".woocommerce-error>li") private WebElement failedBillingDetailMessage;
+    @FindBy(id = "billing_country") private WebElement billingCountry;
     @FindBy(id = "ship-to-different-address-checkbox") private WebElement shipToDifferentAddressCheckbox;
     @FindBy(id = "shipping_first_name") private WebElement shippingFirstname;
     @FindBy(id = "shipping_last_name") private WebElement shippingLastname;

@@ -6,10 +6,9 @@ import io.cucumber.testng.CucumberOptions;
 import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
 
 @CucumberOptions(
-        features = "src/test/resources/features/ApplyCoupon.feature",
-        glue = {"steps","hooks","constants","factory","pages","utils"},
-        tags = "@firstone",
-
+        features = "src/test/resources/features",
+        glue = {"steps","hooks","constants","customTypes"},
+        tags = "@Register or @Login",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports.html",

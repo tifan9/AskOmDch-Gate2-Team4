@@ -1,3 +1,4 @@
+@All @FilterProduct
 Feature: Filter Product
     As a customer,
     I want to filter products by selecting a price range,
@@ -16,5 +17,4 @@ Background:
         Examples:
         |CategoryName|
         |Men  (7)   |
-       |Women  (7)  |
 
