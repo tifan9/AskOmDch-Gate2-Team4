@@ -13,7 +13,7 @@ import pages.StorePage;
 
 import static org.testng.Assert.assertEquals;
 
-public class AddToCartStepsDefs {
+public class ApplyCouponStepDefs {
 
     private WebDriver driver;
     private StorePage storePage;
@@ -28,11 +28,12 @@ public class AddToCartStepsDefs {
     }
 
     @And("the customer is on the cart page")
-    public void customerIsOnCartPage(){
+    public void customerIsOnCartPage() {
         cartPage = storePage.clickViewCart();
     }
+
     @When("the customer applies the coupon {string}")
-    public void customerAppliesCoupon(String coupon){
+    public void customerAppliesCoupon(String coupon) {
         cartPage.applyCouponcode(coupon);
     }
 
@@ -47,7 +48,8 @@ public class AddToCartStepsDefs {
     public void theCouponShouldNotBeAppliedSuccessfully() {
         assertEquals("Coupon \"off30\" does not exist!", cartPage.failMessage());
     }
-  @Then("the cart should be updated successfully")
+
+    @Then("the cart should be updated successfully")
     public void the_cart_should_be_updated_successfully() {
 
         String result = cartPage.getMessage();
