@@ -6,8 +6,8 @@ Background:
     Given I am on the product listing page
 
     Scenario: Successfully filter products within a price range
-        When I filter products with minimum price 30 and maximum price 40
-        Then I should see only products priced between 30 and 40
+        When I filter products with minimum price 20 and maximum price 50
+        Then I should see only products priced between 20 and 50
 
     Scenario Outline: Filter products by Category
         When I select the category "<CategoryName>"

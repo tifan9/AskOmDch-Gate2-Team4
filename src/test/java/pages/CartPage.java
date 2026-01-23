@@ -50,20 +50,22 @@ public class CartPage extends BasePage{
     
     public boolean hasProductsDisplayed() {
         try {
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cart_item, .woocommerce-cart-form__cart-item, tr.cart_item")));
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            shortWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cart_item, .woocommerce-cart-form__cart-item, tr.cart_item")));
             return !cartItems.isEmpty();
         } catch (Exception e) {
             return false;
         }
     }
     public void updateProductQuantity(String productName, int quantity) {
+        WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(3));
         for (WebElement input : quantityInputs) {
             input.clear();
             input.sendKeys(String.valueOf(quantity));
             break;
         }
         updateCartButton.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cart_item, .woocommerce-cart-form__cart-item, tr.cart_item")));
+        shortWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".cart_item, .woocommerce-cart-form__cart-item, tr.cart_item")));
     }
     
     public CartPage(WebDriver driver) {
