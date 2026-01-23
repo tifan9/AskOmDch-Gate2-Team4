@@ -1,5 +1,7 @@
 package domainObjects;
 
+import java.util.Optional;
+
 public class BillingDetails {
 
     private String firstname;
@@ -16,14 +18,14 @@ public class BillingDetails {
                           String town, String state,
                           String zip, String email) {
 
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.country = country;
-        this.street = street;
-        this.town = town;
-        this.state = state;
-        this.zip = zip;
-        this.email = email;
+        this.firstname = Optional.ofNullable(firstname).orElse("");
+        this.lastname = Optional.ofNullable(lastname).orElse("");
+        this.country = Optional.ofNullable(country).orElse("");
+        this.street = Optional.ofNullable(street).orElse("");
+        this.town = Optional.ofNullable(town).orElse("");
+        this.state = Optional.ofNullable(state).orElse("");
+        this.zip = Optional.ofNullable(zip).orElse("");
+        this.email = Optional.ofNullable(email).orElse("");
     }
 
     public String getFirstname() {

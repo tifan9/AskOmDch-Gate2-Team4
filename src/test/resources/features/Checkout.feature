@@ -17,28 +17,30 @@ Feature: Checkout page functionality
 
   Scenario: Verify validation when billing and shipping forms have missing required fields
     When I provide billing details
-      | firstName | lastName | country            | address     | city  | state | zipCode | email             |
-      |           | Julien   | United States (US) | 123 Main St | Holly | NY    | 10001   | jul.ish@gmail.com |
+      | firstName | lastName | country | address   | city   | state  | zipCode | email             |
+      |           | Julien   | Rwanda  | KK 423 st | Kigali | Kigali | 00000   | jul.ish@gmail.com |
     And I place the order
     Then I should see error message for required field: "Billing First name is a required field."
 
-  @secondone
+    @secondone
   Rule: Place order with separate billing and shipping addresses
 
-  Scenario: Verify checkout with billing details only
-    When I provide billing details
-      | firstName | lastName | country | address   | city   | state  | zipCode | email             |
-      | ISHIMWE   | Julien   | Rwanda  | KG 555 St | Kigali | Gasabo | 10001   | john.doe@test.com |
-    And I place the order
-    Then the order should be placed successfully
+    Scenario: Verify checkout with billing details and different valid shipping address
+      When I provide billing details
+        | firstName | lastName | country | address   | city   | state  | zipCode | email                   |
+        | ISHIMWE   | Julien   | Rwanda  | KG 555 St | Kigali | Gasabo | 10001   | chrismbobimpa@gmail.com |
+      And I provide different shipping details
+        | firstName | lastName | country | address  | city    | state  | zipCode |
+        | Jane      | Smith    | Rwanda  | ibereshi | Musanze | Rwanda | 00000   |
+      And I place the order
+      Then the order should be placed successfully
 
-
-  Scenario: Verify checkout with billing details and different shipping address
-    When I provide billing details
-      | firstName | lastName | country | address   | city   | state  | zipCode | email                   |
-      | ISHIMWE   | Julien   | Rwanda  | KG 555 St | Kigali | Gasabo | 10001   | chrismbobimpa@gmail.com |
-    And I provide different shipping details
-      | firstName | lastName | country            | address        | city   | state |
-      | Jane      | Smith    | United States (US) | 45 Market Road | Austin | TX    |
-    And I place the order
-    Then the order should be placed successfully
+    Scenario: Verify checkout with billing details and different invalid shipping address
+      When I provide billing details
+        | firstName | lastName | country | address   | city   | state  | zipCode | email                   |
+        | ISHIMWE   | Julien   | Rwanda  | KG 555 St | Kigali | Gasabo | 00000   | chrismbobimpa@gmail.com |
+      And I provide different shipping details
+        | firstName | lastName | country | address | city | state  | zipCode |
+        | Jane      | Smith    | Rwanda  |         | KG   | Kigali | 00000   |
+      And I place the order
+      Then I should see error message for required field: "Shipping Street address is a required field."

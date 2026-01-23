@@ -3,6 +3,7 @@ package steps;
 import constants.EndPoints;
 import domainObjects.BillingDetails;
 import factory.DriverFactory;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -61,5 +62,11 @@ public class CheckoutStepDefs {
     public void billingDetailsErrorMessage(String errorMessage){
         String result = checkoutPage.getFailBillingDetailsMessage();
         assertEquals(result,errorMessage,"Error message not match");
+    }
+
+    @And("I provide different shipping details")
+    public void iProvideDifferentShippingDetails(BillingDetails billingDetails) {
+            this.billingDetails = billingDetails;
+            checkoutPage.fillShippingAddressForm(billingDetails);
     }
 }
