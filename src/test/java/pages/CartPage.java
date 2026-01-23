@@ -62,5 +62,15 @@ public class CartPage extends BasePage{
         return PageFactoryManager.getCheckoutPage(driver);
     }
 
+    public void applyCouponcode(String code) {
+        couponFld.sendKeys(code);
+        applyCouponButton.click();
+        wait.until(ExpectedConditions.or(
+                ExpectedConditions.visibilityOfElementLocated(successMessage),
+                ExpectedConditions.visibilityOfElementLocated(failMessage)
+        ));
+
+    }
+
 
 }

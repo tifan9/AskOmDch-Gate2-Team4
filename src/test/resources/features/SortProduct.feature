@@ -14,6 +14,3 @@ Feature: Sort Product
         | sortOption           |
         | Sort by price: low to high  |
         | Sort by price: high to low  |
-#        | Popularity           |
-#        | Average Rating       |
-#        | Latest               |
