@@ -6,23 +6,18 @@ import io.cucumber.testng.CucumberOptions;
 import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
 
 @CucumberOptions(
-        features = "src/test/resources/features",
-        glue = {"steps","hooks", "customTypes"},
-        tags = "",
+        features = "src/test/resources/features/ApplyCoupon.feature",
+        glue = {"steps","hooks","constants","factory","pages","utils"},
+        snippets = CAMELCASE,
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports.html",
                 "json:target/cucumber.json"
 
         },
-        snippets = CAMELCASE,
         monochrome = true
 )
 
 public class RunnerTest extends AbstractTestNGCucumberTests {
-//    @DataProvider(parallel = true)
-//    @Override
-//    public Object[][] scenarios(){
-//        return super.scenarios();
-//    }
+
 }

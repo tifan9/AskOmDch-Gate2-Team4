@@ -1,4 +1,4 @@
-package domainObj;
+package domainObjects;
 
 public class ProductObject {
     private String product;

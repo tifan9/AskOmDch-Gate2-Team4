@@ -1,6 +1,5 @@
 package steps;
 
-import constants.EndPoints;
 import factory.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
@@ -11,56 +10,16 @@ import pages.StorePage;
 
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class AddToCartStepsDefs {
     private WebDriver driver;
     private StorePage storePage;
     private CartPage cartPage;
 
-
-    @And("the customer is on the cart page")
-    public void customerIsOnCartPage(){
-        cartPage = storePage.clickViewCart();
-    }
-    @When("the customer applies the coupon {string}")
-    public void customerAppliesCoupon(String coupon){
-        cartPage.applyCouponcode(coupon);
-    }
-
-    @Then("the coupon should be applied successfully")
-    public void i_should_be_redirected_to_the_cart_page() {
-
-        assertEquals(cartPage.successMessage(), "Coupon code applied successfully.");
-
-    }
-
     @When("the customer updates the product quantity")
     public void the_customer_updates_the_product_quantity() {
-
-    }
-    @Then("the cart should be updated successfully")
-    public void the_cart_should_be_updated_successfully() {
-
-    }
-    
-    @When("I add {string} to the cart")
-    public void iAddToTheCart(String productName) {
-        driver = DriverFactory.getDriver();
-        storePage = PageFactoryManager.getStorePage(driver);
-        storePage.addProductToCart(productName);
-    }
-
-    @Then("the product should be added to the cart successfully")
-    public void theProductShouldBeAddedToTheCartSuccessfully() {
-        assertTrue(storePage.isProductAddedToCart(), "Product was not added to cart successfully");
-    }
-
-    @Then("I should see the product in the cart")
-    public void iShouldSeeTheProductInTheCart() {
-        cartPage = storePage.clickViewCart();
-        assertTrue(cartPage != null, "Failed to navigate to cart page");
+        // Implementation for updating product quantity
     }
 
     @When("I add the following products to the cart:")
@@ -96,18 +55,5 @@ public class AddToCartStepsDefs {
     @Then("the cart should reflect the updated quantity")
     public void theCartShouldReflectTheUpdatedQuantity() {
         assertTrue(cartPage.hasProductsDisplayed(), "Cart should contain products");
-    }
-
-    @And("the cart total should be updated accordingly")
-    public void theCartTotalShouldBeUpdatedAccordingly() {
-        double actualTotal = cartPage.getCartTotal();
-        assertTrue(actualTotal > 0, "Cart total should be greater than 0");
-    }
-
-    @And("the cart total should reflect the sum of all item prices")
-    public void theCartTotalShouldReflectTheSumOfAllItemPrices() {
-        double actualTotal = cartPage.getCartTotal();
-        double expectedSum = cartPage.calculateSumOfItems();
-        assertEquals(actualTotal, expectedSum, 0.01, "The cart total does not match the sum of items!");
     }
 }

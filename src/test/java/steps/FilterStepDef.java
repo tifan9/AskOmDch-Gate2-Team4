@@ -29,9 +29,10 @@ public class FilterStepDef {
 
     @Then("I should see only products priced between {int} and {int}")
     public void iShouldSeeOnlyProductsPricedBetweenAnd(int minPrice, int maxPrice) {
-        boolean hasProducts = storePage.hasProductsDisplayed();
-        assertTrue(hasProducts, "No products found after filtering");
-    }
+        assertTrue(
+                storePage.areAllProductsInPriceRange(minPrice, maxPrice),
+                "Some products are outside the expected price range"
+        );    }
 
     @When("I select the category {string}")
     public void iSelectTheCategory(String categoryName) {
@@ -40,6 +41,9 @@ public class FilterStepDef {
 
     @Then("I should see only products in that {string}")
     public void iShouldSeeOnlyProductsInThat(String categoryName) {
-        assertTrue(storePage.hasProductsDisplayed());
+        assertTrue(
+                storePage.areAllProductsInCategory(categoryName),
+                "Some products do not belong to category: " + categoryName
+        );
     }
 }
