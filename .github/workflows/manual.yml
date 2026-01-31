@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Push Workflow
+name: manual workflow
 
 on:
   push:
